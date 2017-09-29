@@ -3,7 +3,8 @@ package hello;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 
-import com.vaadin.server.FontAwesome;
+import com.vaadin.server.BrowserWindowOpener;
+import com.vaadin.server.*;
 import com.vaadin.server.VaadinRequest;
 import com.vaadin.shared.ui.ValueChangeMode;
 import com.vaadin.spring.annotation.SpringUI;
@@ -20,12 +21,14 @@ public class VaadinUI extends UI {
 	private final CustomerRepository repo;
 
 	private final CustomerEditor editor;
-
+	
 	final Grid<Customer> grid;
 
 	final TextField filter;
 
 	private final Button addNewBtn;
+	
+	/*private final Button help;*/
 
 	@Autowired
 	public VaadinUI(CustomerRepository repo, CustomerEditor editor) {
@@ -40,9 +43,19 @@ public class VaadinUI extends UI {
 	protected void init(VaadinRequest request) {
 		// build layout
 		HorizontalLayout actions = new HorizontalLayout(filter, addNewBtn);
+		
+		BrowserWindowOpener opener = new BrowserWindowOpener("https://github.com/viritin/viritin/wiki/Vaadin-8-upgrade");
+		opener.setFeatures("height=200,width=300,resizable");
+		opener.setWindowName("_blank");
+		Button button = new Button("Help");
+		opener.extend(button);
+		actions.addComponent(button);
+		
 		VerticalLayout mainLayout = new VerticalLayout(actions, grid, editor);
 		setContent(mainLayout);
 
+		
+		
 		grid.setHeight(300, Unit.PIXELS);
 		grid.setColumns("id", "firstName", "lastName");
 
