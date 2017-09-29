@@ -13,15 +13,7 @@ import com.vaadin.ui.TextField;
 import com.vaadin.ui.VerticalLayout;
 import com.vaadin.ui.themes.ValoTheme;
 
-/**
- * A simple example to introduce building forms. As your real application is probably much
- * more complicated than this example, you could re-use this form in multiple places. This
- * example component is only used in VaadinUI.
- * <p>
- * In a real world application you'll most likely using a common super class for all your
- * forms - less code, better UX. See e.g. AbstractForm in Viritin
- * (https://vaadin.com/addon/viritin).
- */
+
 @SpringComponent
 @UIScope
 public class CustomerEditor extends VerticalLayout {
@@ -56,8 +48,15 @@ public class CustomerEditor extends VerticalLayout {
 
 		// Configure and style components
 		setSpacing(true);
+		 
+	     /* When we use the Valo menu and wish to enable responsive features of the
+	      menu, we need to add this style name to the UI containing the menu.*/
+	    
 		actions.setStyleName(ValoTheme.LAYOUT_COMPONENT_GROUP);
 		save.setStyleName(ValoTheme.BUTTON_PRIMARY);
+		
+		//Makes it possible to invoke a click on this button by pressing the given keycode
+		
 		save.setClickShortcut(ShortcutAction.KeyCode.ENTER);
 
 		// wire action buttons to save, delete and reset
@@ -88,8 +87,6 @@ public class CustomerEditor extends VerticalLayout {
 		cancel.setVisible(persisted);
 
 		// Bind customer properties to similarly named fields
-		// Could also use annotation or "manual binding" or programmatically
-		// moving values from fields to entities before saving
 		binder.setBean(customer);
 
 		setVisible(true);

@@ -22,6 +22,7 @@ public class VaadinUI extends UI {
 
 	private final CustomerEditor editor;
 	
+	//A grid component for displaying tabular data.
 	final Grid<Customer> grid;
 
 	final TextField filter;
