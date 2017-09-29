@@ -44,7 +44,7 @@ public class VaadinUI extends UI {
 		// build layout
 		HorizontalLayout actions = new HorizontalLayout(filter, addNewBtn);
 		
-		BrowserWindowOpener opener = new BrowserWindowOpener("https://github.com/viritin/viritin/wiki/Vaadin-8-upgrade");
+		BrowserWindowOpener opener = new BrowserWindowOpener("https://github.com/spring-guides/gs-crud-with-vaadin/wiki");
 		opener.setFeatures("height=200,width=300,resizable");
 		opener.setWindowName("_blank");
 		Button button = new Button("Help");
