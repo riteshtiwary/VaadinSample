@@ -73,7 +73,7 @@ public class CustomerEditor extends VerticalLayout {
 
 	public final void editCustomer(Customer c) {
 		if (c == null) {
-			setVisible(false);
+			//setVisible(false);
 			return;
 		}
 		final boolean persisted = c.getId() != null;
@@ -92,9 +92,11 @@ public class CustomerEditor extends VerticalLayout {
 		setVisible(true);
 
 		// A hack to ensure the whole form is visible
-		save.focus();
+		//save.focus();
+		
 		// Select all text in firstName field automatically
 		firstName.selectAll();
+		
 	}
 
 	public void setChangeHandler(ChangeHandler h) {
