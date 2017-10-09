@@ -24,7 +24,7 @@ public class CustomerEditorTests {
 	public void shouldStoreCustomerInRepoWhenEditorSaveClicked() {
 		this.editor.firstName.setValue(FIRST_NAME);
 		this.editor.lastName.setValue(LAST_NAME);
-		customerDataWasFilled();
+		/*customerDataWasFilled();*/
 
 		this.editor.save.click();
 
@@ -35,16 +35,16 @@ public class CustomerEditorTests {
 	public void shouldDeleteCustomerFromRepoWhenEditorDeleteClicked() {
 		this.editor.firstName.setValue(FIRST_NAME);
 		this.editor.lastName.setValue(LAST_NAME);
-		customerDataWasFilled();
+		/*customerDataWasFilled();*/
 
 		editor.delete.click();
 
 		then(this.customerRepository).should().delete(argThat(customerMatchesEditorFields()));
 	}
 
-	private void customerDataWasFilled() {
+	/*private void customerDataWasFilled() {
 		this.editor.editCustomer(new Customer(FIRST_NAME, LAST_NAME));
-	}
+	}*/
 
 	private TypeSafeMatcher<Customer> customerMatchesEditorFields() {
 		return new TypeSafeMatcher<Customer>() {

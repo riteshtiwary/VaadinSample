@@ -21,11 +21,11 @@ public class Application {
 	public CommandLineRunner loadData(CustomerRepository repository) {
 		return (args) -> {
 			// save a couple of customers
-			repository.save(new Customer("Ritesh", "Tiwary"));
-			repository.save(new Customer("Harika", "Janamanchi"));
-			repository.save(new Customer("Prashant", "Nair"));
-			repository.save(new Customer("Avinash", "Kumar"));
-			repository.save(new Customer("Divya", "Gajam"));
+			repository.save(new Customer("Ritesh", "Tiwary","22","8886858465","rt@gmail.com"));
+			repository.save(new Customer("Harika", "Janamanchi","24","1234567890","hj@gmail.com"));
+			repository.save(new Customer("Prashant", "Nair","30","1234543218","pn@gmail.com"));
+			repository.save(new Customer("Avinash", "Kumar","28","1234387658","ak@gmail.com"));
+			repository.save(new Customer("Divya", "Gajam","23","8965432789","dj@gmail.com"));
 
 			// fetch all customers
 			log.info("Customers found with findAll():");
@@ -48,6 +48,10 @@ public class Application {
 			for (Customer bauer : repository
 					.findByLastNameStartsWithIgnoreCase("")) {
 				log.info(bauer.toString());
+			}
+			for (Customer haire : repository
+					.findByLastNameStartsWithIgnoreCase("")) {
+				log.info(haire.toString());
 			}
 			log.info("");
 		};

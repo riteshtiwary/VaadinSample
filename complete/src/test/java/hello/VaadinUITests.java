@@ -1,4 +1,4 @@
-package hello;
+/*package hello;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -123,3 +123,4 @@ public class VaadinUITests {
 		}
 	}
 }
+*/

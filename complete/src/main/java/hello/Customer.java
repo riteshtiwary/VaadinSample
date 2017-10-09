@@ -14,17 +14,21 @@ public class Customer {
 	private String firstName;
 
 	private String lastName;
-
-	protected Customer() {
-	}
-
-	public Customer(String firstName, String lastName) {
-		this.firstName = firstName;
-		this.lastName = lastName;
-	}
+	
+	private String age;
+	
+	private String mobNo;
+	
+	private String email;
+	
+	
 
 	public Long getId() {
 		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
 	}
 
 	public String getFirstName() {
@@ -43,10 +47,54 @@ public class Customer {
 		this.lastName = lastName;
 	}
 
+	public String getAge() {
+		return age;
+	}
+
+	public void setAge(String age) {
+		this.age = age;
+	}
+
+	public String getMobNo() {
+		return mobNo;
+	}
+
+	public void setMobNo(String mobNo) {
+		this.mobNo = mobNo;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	
+	public Customer() {
+		super();
+	}
+
+	public Customer(String firstName, String lastName, String age, String mobNo, String email) {
+		super();
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.age = age;
+		this.mobNo = mobNo;
+		this.email = email;
+		
+	}
+
 	@Override
 	public String toString() {
-		return String.format("Customer[id=%d, firstName='%s', lastName='%s']", id,
-				firstName, lastName);
+		return "Customer [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", age=" + age
+				+ ", mobNo=" + mobNo + ", email=" + email + "]";
 	}
+
+	
+	
+	
+	
 
 }

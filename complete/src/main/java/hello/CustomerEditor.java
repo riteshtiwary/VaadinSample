@@ -1,8 +1,10 @@
 package hello;
 
+import org.hibernate.validator.internal.constraintvalidators.bv.NullValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.vaadin.data.Binder;
+import com.vaadin.data.validator.StringLengthValidator;
 import com.vaadin.event.ShortcutAction;
 import com.vaadin.server.FontAwesome;
 import com.vaadin.spring.annotation.SpringComponent;
@@ -28,6 +30,11 @@ public class CustomerEditor extends VerticalLayout {
 	/* Fields to edit properties in Customer entity */
 	TextField firstName = new TextField("First name");
 	TextField lastName = new TextField("Last name");
+	TextField age = new TextField("Age");
+	TextField mobNo = new TextField("Mobile No.");
+	TextField email = new TextField("Email Ids");
+	
+
 
 	/* Action buttons */
 	Button save = new Button("Save", FontAwesome.SAVE);
@@ -36,15 +43,44 @@ public class CustomerEditor extends VerticalLayout {
 	CssLayout actions = new CssLayout(save, cancel, delete);
 
 	Binder<Customer> binder = new Binder<>(Customer.class);
+	
+	
+
 
 	@Autowired
 	public CustomerEditor(CustomerRepository repository) {
 		this.repository = repository;
 
-		addComponents(firstName, lastName, actions);
-
+		addComponents(firstName, lastName, age,  mobNo, email, actions);
+		/*
+		binder.forField(firstName).asRequired("This field can not be empty");
+		binder.forField(lastName).asRequired("This field can not be empty");
+		binder.forField(age).asRequired("This field can not be empty");
+		binder.forField(mobNo).asRequired("This field can not be empty");
+		binder.forField(email).asRequired("This field can not be empty");*/
+		
+		firstName.setMaxLength(10);
+		lastName.setMaxLength(10);
+		age.setMaxLength(2);
+		mobNo.setMaxLength(13);
+		email.setMaxLength(25);
+		firstName.getPlaceholder();
+	
+		
+		//required indicator for required field
+		
+		firstName.setRequiredIndicatorVisible(true);
+		lastName.setRequiredIndicatorVisible(true);
+		age.setRequiredIndicatorVisible(true);
+		mobNo.setRequiredIndicatorVisible(true);
+		email.setRequiredIndicatorVisible(true);
+		
 		// bind using naming convention
 		binder.bindInstanceFields(this);
+		
+		
+		
+
 
 		// Configure and style components
 		setSpacing(true);
@@ -85,7 +121,9 @@ public class CustomerEditor extends VerticalLayout {
 			customer = c;
 		}
 		cancel.setVisible(persisted);
-
+		
+		
+		
 		// Bind customer properties to similarly named fields
 		binder.setBean(customer);
 
@@ -105,5 +143,9 @@ public class CustomerEditor extends VerticalLayout {
 		save.addClickListener(e -> h.onChange());
 		delete.addClickListener(e -> h.onChange());
 	}
+	
+	/*public String getSelected(String selected) {
+		
+	}*/
 
 }
